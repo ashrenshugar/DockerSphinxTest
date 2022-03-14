@@ -1,21 +1,32 @@
-FROM python:3.8-slim-buster
+FROM python:slim
+LABEL maintainer="Sphinx Team <https://www.sphinx-doc.org/>"
 
-# Update package listing and install security updates and
-# make and pipenv
+WORKDIR /docs
+RUN apt-get update \
+ && apt-get install --no-install-recommends -y \
+      graphviz \
+      imagemagick \
+      make \
+      \
+      latexmk \
+      lmodern \
+      fonts-freefont-otf \
+      texlive-latex-recommended \
+      texlive-latex-extra \
+      texlive-fonts-recommended \
+      texlive-fonts-extra \
+      texlive-lang-cjk \
+      texlive-lang-chinese \
+      texlive-lang-japanese \
+      texlive-luatex \
+      texlive-xetex \
+      xindy \
+      tex-gyre \
+ && apt-get autoremove \
+ && apt-get clean \
+ && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && \
-    apt-get -y upgrade && \
-    apt-get install -y --no-install-recommends make && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    pip install --no-cache-dir --upgrade pip && \
-    pip install --no-cache-dir pipenv
+RUN python3 -m pip install --no-cache-dir -U pip
+RUN python3 -m pip install --no-cache-dir Sphinx==4.4.0 Pillow
 
-# Set the working directory to our repo root
-WORKDIR /sphinxtechnicalwriting
-
-# Only copy the Pipfile
-COPY Pipfile Pipfile.lock /sphinxtechnicalwriting/
-
-# Install the packages
-RUN pipenv install --system --deploy
+CMD ["make", "latexpdf"]
