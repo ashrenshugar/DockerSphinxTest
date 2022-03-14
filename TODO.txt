@@ -1,0 +1,5 @@
+TOC
+Figure out how to properly intergrate the .md files into a global TOC instead of "orphan"ing them
+
+PDF
+Replace Commented out code that was interfering with PDF creation (lack of valid links)
