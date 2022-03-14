@@ -12,7 +12,7 @@ RUN apt-get update && \
     pip install --no-cache-dir pipenv
 
 # Set the working directory to our repo root
-WORKDIR /docs
+WORKDIR /sphinxtechnicalwriting
 
 # Only copy the Pipfile
 COPY Pipfile Pipfile.lock /sphinxtechnicalwriting/
