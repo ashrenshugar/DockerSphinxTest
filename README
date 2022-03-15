@@ -1,0 +1,1 @@
+Currently $ docker run --rm -v /path/to/document:/docs tk0miya/sphinx-pdf doesnt through up an error, but also has no output
