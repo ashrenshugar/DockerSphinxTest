@@ -1,1 +1,5 @@
-Currently $ docker run --rm -v /path/to/document:/docs tk0miya/sphinx-pdf doesnt throw up an error, but also has no output
+#To build. #prepare for a VERY long wait
+docker build -t <name> --no-cache .
+
+#To run
+docker run -v $(pwd):/docs pdftest make latexpdf
