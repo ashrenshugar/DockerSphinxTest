@@ -3,3 +3,5 @@ docker build -t <name> --no-cache .
 
 #To run
 docker run -v $(pwd):/docs <name> make latexpdf
+
+docker run ashrenshugar/dockershpinxtest make latexpdf
