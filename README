@@ -2,6 +2,10 @@
 docker build -t <name> --no-cache .
 
 #To run
+#Ubuntu
 docker run -v $(pwd):/docs <name> make latexpdf
+
+#windows
+docker run -v <location>:/docs <name> make latexpdf
 
 docker run ashrenshugar/dockershpinxtest make latexpdf
